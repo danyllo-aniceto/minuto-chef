@@ -1,0 +1,173 @@
+/* ReceitasPage.module.css */
+
+.page {
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
+
+.title {
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 800;
+  color: rgb(var(--color-primary));
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: rgb(var(--color-text));
+  opacity: 0.8;
+}
+
+/* filtros */
+.filters {
+  margin: 0 auto 1.25rem auto;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+.filtersInner {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* bloco de pesquisa por nome */
+.searchGroup {
+  flex: 1 1 280px;
+  min-width: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.label {
+  font-size: 0.85rem;
+  color: rgb(var(--color-text));
+  opacity: 0.9;
+}
+
+/* input pill */
+.inputWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: 999px;
+  border: 1px solid rgb(var(--color-primary));
+  background: rgb(var(--color-bg));
+  color: rgb(var(--color-text));
+  outline: none;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03);
+  transition: box-shadow 0.12s ease, transform 0.08s ease, border-color 0.12s;
+}
+
+.input::placeholder {
+  color: rgb(var(--color-text));
+  opacity: 0.45;
+}
+
+.clearBtn {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 0;
+  background: transparent;
+  padding: 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: rgb(var(--color-text));
+  opacity: 0.7;
+}
+
+/* ingredients block (onde fica o componente IngredientsFilter) */
+.ingredientsBlock {
+  flex: 1 1 420px;
+  min-width: 260px;
+}
+
+/* clear all control */
+.clearBlock {
+  display: flex;
+  align-items: flex-end;
+  min-width: 120px;
+}
+
+.clearAllBtn {
+  background: rgb(var(--color-primary));
+  border: 1px solid rgb(var(--color-border));
+  color: white;
+  padding: 0.55rem 0.9rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: background 0.12s ease, transform 0.08s;
+}
+.clearAllBtn:hover {
+  background: rgba(0, 0, 0, 0.03);
+  color: rgb(var(--color-text));
+  transform: translateY(-2px);
+}
+
+/* hint/status row */
+.hintRow {
+  margin-top: 0.6rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.5rem;
+}
+
+.hint {
+  font-size: 0.9rem;
+  color: rgb(var(--color-text));
+  opacity: 0.75;
+}
+
+.status {
+  font-size: 0.9rem;
+  color: rgb(var(--color-text));
+  opacity: 0.75;
+}
+
+/* list section spacing */
+.listSection {
+  margin-top: 1rem;
+}
+
+/* responsiveness */
+@media (max-width: 880px) {
+  .filtersInner {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .ingredientsBlock {
+    order: 2;
+  }
+  .searchGroup {
+    order: 1;
+  }
+  .clearBlock {
+    order: 3;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .hintRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+}

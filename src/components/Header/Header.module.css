@@ -1,0 +1,142 @@
+/* Header.module.css */
+.header {
+  border-bottom: 1px solid rgb(var(--color-border));
+  background: transparent;
+  position: relative;
+  z-index: 20;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+
+.logo {
+  width: 10rem;
+  margin-left: 4rem;
+}
+
+.title {
+  font-weight: 800;
+  color: rgb(var(--color-primary));
+  font-size: 1.05rem;
+}
+
+/* Desktop nav (hidden on small) */
+.navDesktop {
+  display: none;
+  align-items: center;
+  gap: 1rem;
+}
+
+.link {
+  color: rgb(var(--color-text));
+  text-decoration: none;
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: background 0.12s, color 0.12s;
+}
+
+.link:hover {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.active {
+  background: rgb(var(--color-primary));
+  color: white;
+}
+
+/* vertical separator */
+.separator {
+  width: 1px;
+  height: 28px;
+  background: rgb(var(--color-border));
+}
+
+/* Theme toggle placement */
+.toggleDesktop {
+  display: block;
+}
+.toggleMobile {
+  display: none;
+}
+
+/* Mobile right controls */
+.mobileRight {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Hamburger button (MUI IconButton wrapper) */
+.hamburgerBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  border-radius: 8px;
+  background: rgb(var(--color-border));
+  border: 0;
+  cursor: pointer;
+  transition: background 0.12s ease;
+}
+
+.hamburgerBtn:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+/* Mobile menu panel (hidden by default) */
+.mobilePanel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.22s ease;
+  background: rgb(var(--color-bg));
+  border-top: 1px solid rgb(var(--color-border));
+}
+
+.mobilePanel.open {
+  max-height: 420px; /* ajuste conforme necessário */
+}
+
+.mobileLink {
+  display: block;
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  color: rgb(var(--color-text));
+  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+/* responsive behavior */
+@media (min-width: 768px) {
+  .navDesktop {
+    display: flex;
+  }
+  .toggleDesktop {
+    display: block;
+  }
+  .toggleMobile {
+    display: none;
+  }
+  .mobileRight {
+    display: none;
+  }
+  .mobilePanel {
+    display: none;
+  }
+
+  .logo {
+    width: 10rem;
+    margin-left: 4rem;
+  }
+}

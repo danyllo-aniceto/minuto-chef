@@ -1,0 +1,103 @@
+/* ReceitasList.module.css */
+.status {
+  text-align: center;
+  color: rgb(var(--color-text));
+  opacity: 0.85;
+  padding: 2rem;
+}
+
+/* Grid responsivo */
+.grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+/* Card base */
+.card {
+  background: rgb(var(--color-bg));
+  border: 1px solid rgb(var(--color-border));
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Imagem */
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  background: rgba(var(--color-primary), 0.05);
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.noImage {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  color: rgba(var(--color-text), 0.6);
+  font-size: 0.9rem;
+}
+
+/* Corpo */
+.cardBody {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.cardTitle {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: rgb(var(--color-text));
+  margin-bottom: 0.75rem;
+}
+
+/* Botão */
+.button {
+  display: inline-block;
+  background: rgb(var(--color-primary));
+  color: #fff;
+  text-align: center;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.button:hover {
+  background: rgba(var(--color-primary), 0.85);
+  transform: translateY(-2px);
+}
+
+/* Responsividade extra */
+@media (max-width: 480px) {
+  .cardBody {
+    padding: 0.8rem;
+  }
+
+  .cardTitle {
+    font-size: 0.95rem;
+  }
+
+  .button {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.9rem;
+  }
+}

@@ -1,0 +1,229 @@
+/* ReceitaDetailPage.module.css */
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  color: rgb(var(--color-text));
+  background: transparent;
+}
+
+/* topbar */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.back {
+  text-decoration: none;
+  color: rgb(var(--color-text));
+  background: transparent;
+  padding: 0.4rem 0.6rem;
+  border-radius: 8px;
+  border: 1px solid transparent;
+}
+.back:hover {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.iconBtn {
+  background: transparent;
+  border: 1px solid rgb(var(--color-border));
+  padding: 0.4rem 0.6rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.iconBtn:hover {
+  transform: translateY(-2px);
+}
+
+/* header */
+.header {
+  margin-bottom: 1rem;
+  text-align: left;
+}
+.title {
+  font-size: clamp(1.6rem, 3.6vw, 2.25rem);
+  margin: 0 0 0.35rem 0;
+  color: rgb(var(--color-primary));
+  font-weight: 800;
+}
+.subtitle {
+  margin: 0;
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+/* hero image */
+.hero {
+  width: 100%;
+  margin: 0 0 1rem 0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+}
+.heroImg {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  display: block;
+}
+
+/* placeholder when no image */
+.heroPlaceholder {
+  width: 100%;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  border: 1px dashed rgba(0, 0, 0, 0.06);
+  color: rgb(var(--color-text));
+  background: rgba(0, 0, 0, 0.02);
+  margin-bottom: 1rem;
+}
+
+/* grid layout: main + sidebar */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+/* main content */
+.main {
+  min-width: 0;
+}
+.section {
+  background: rgb(var(--color-bg));
+  border: 1px solid rgb(var(--color-border));
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.04);
+}
+.sectionTitle {
+  margin: 0 0 0.75rem 0;
+  font-weight: 700;
+  color: rgb(var(--color-primary));
+}
+.prep {
+  line-height: 1.6;
+  color: rgb(var(--color-text));
+}
+.prepText {
+  white-space: pre-line;
+  margin: 0;
+}
+.empty {
+  color: rgba(0, 0, 0, 0.45);
+}
+
+/* sidebar card */
+.sidebar {
+  position: relative;
+}
+.card {
+  background: rgb(var(--color-bg));
+  border: 1px solid rgb(var(--color-border));
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.04);
+}
+.cardTitle {
+  margin: 0 0 0.75rem 0;
+  font-weight: 800;
+  color: rgb(var(--color-primary));
+}
+.ingredients {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+.ingredient {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.5rem;
+  border-radius: 8px;
+  align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  background: linear-gradient(
+    180deg,
+    rgba(var(--color-bg), 0.02),
+    rgba(var(--color-bg), 0)
+  );
+}
+.ingredientName {
+  font-weight: 600;
+  color: rgb(var(--color-text));
+}
+.ingredientMeasure {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  color: rgb(var(--color-text));
+}
+
+/* card footer */
+.cardFooter {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+.primaryBtn {
+  text-decoration: none;
+  display: inline-block;
+  background: rgb(var(--color-primary));
+  color: #fff;
+  padding: 0.55rem 0.95rem;
+  border-radius: 10px;
+  font-weight: 700;
+}
+.primaryBtn:hover {
+  transform: translateY(-2px);
+}
+
+/* pagination / small controls_styles (if needed) */
+.pagination {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* center helper */
+.center {
+  padding: 2rem;
+  text-align: center;
+  color: rgb(var(--color-text));
+}
+
+/* responsive */
+@media (max-width: 960px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .heroImg {
+    height: 240px;
+  }
+  .heroPlaceholder {
+    height: 180px;
+  }
+  .sidebar {
+    order: 2;
+  }
+  .main {
+    order: 1;
+  }
+}

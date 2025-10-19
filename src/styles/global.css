@@ -1,0 +1,45 @@
+/* src/styles/global.css */
+:root {
+  --color-bg: 242 242 242;
+  --color-text: 122 109 87;
+  --color-primary: 250 174 52;
+  --color-secondary: 147 51 234;
+  --color-border: 229 231 235;
+  --reader-bg: 248 250 252;
+}
+
+/* dark theme */
+.dark {
+  --color-bg: 15 23 42;
+  --color-text: 248 250 252;
+  --color-primary: 59 130 246;
+  --color-secondary: 168 85 247;
+  --color-border: 51 65 85;
+  --reader-bg: 7 16 41;
+}
+
+/* reset / base */
+* {
+  box-sizing: border-box;
+}
+html,
+body,
+#root {
+  height: 100%;
+}
+body {
+  margin: 0;
+  background-color: rgb(var(--color-bg));
+  color: rgb(var(--color-text));
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* utilitários pequenos */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
