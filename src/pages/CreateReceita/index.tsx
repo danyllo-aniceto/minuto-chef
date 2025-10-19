@@ -1,5 +1,4 @@
 // src/pages/CreateReceitaPage/index.tsx
-import React from "react";
 import { Link } from "react-router-dom";
 import { CreateReceitaForm } from "../../components/CreateReceitaForm";
 import styles from "./CreateReceitaPage.module.css";

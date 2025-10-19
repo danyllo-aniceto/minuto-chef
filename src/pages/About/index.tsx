@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./AboutPage.module.css";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
