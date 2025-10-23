@@ -140,17 +140,6 @@ export function IngredientsFilter({
             }}
           />
         </div>
-
-        {selected.length > 0 && (
-          <button
-            type="button"
-            className={styles.clearAll}
-            onClick={() => onChange([])}
-            title="Limpar ingredientes selecionados"
-          >
-            Limpar
-          </button>
-        )}
       </div>
 
       {open && suggestions.length > 0 && (

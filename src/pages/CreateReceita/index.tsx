@@ -2,13 +2,14 @@
 import { Link } from "react-router-dom";
 import { CreateReceitaForm } from "../../components/CreateReceitaForm";
 import styles from "./CreateReceitaPage.module.css";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 export default function CreateReceitaPage() {
   return (
     <div className={styles.page}>
       <div className={styles.top}>
         <Link to="/receitas" className={styles.back}>
-          ← Voltar às receitas
+          <ArrowBackIcon />
         </Link>
         <h1 className={styles.title}>Criar Receita</h1>
       </div>

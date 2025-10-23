@@ -3,20 +3,27 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./Header.module.css";
 import Logo from "../../assets/logo_minutoChef.png";
+import LogoWhite from "../../assets/logo_minutoChef_white.png";
 import { ThemeToggle } from "../ThemeToggle";
 
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
+import { useTheme } from "../../hooks/useTheme";
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const { theme } = useTheme();
 
   return (
     <header className={styles.header}>
       <div className={`${styles.inner} container`}>
         <NavLink to="/" className={styles.brand}>
-          <img src={Logo} alt="Minuto Chef" className={styles.logo} />
+          <img
+            src={theme === "dark" ? LogoWhite : Logo}
+            alt="Minuto Chef"
+            className={styles.logo}
+          />
           {/* opcional: exibir título se quiser */}
           {/* <span className={styles.title}>Minuto Chef</span> */}
         </NavLink>
@@ -33,12 +40,14 @@ export function Header() {
           </NavLink>
           <NavLink
             to="/receitas"
+            end
             className={({ isActive }) =>
               isActive ? `${styles.link} ${styles.active}` : styles.link
             }
           >
             Receitas
           </NavLink>
+
           <NavLink
             to="/receitas/novo"
             className={({ isActive }) =>

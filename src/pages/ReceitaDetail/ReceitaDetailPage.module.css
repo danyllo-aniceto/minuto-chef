@@ -20,10 +20,9 @@
 .back {
   text-decoration: none;
   color: rgb(var(--color-text));
-  background: transparent;
-  padding: 0.4rem 0.6rem;
   border-radius: 8px;
   border: 1px solid transparent;
+  margin-top: 4px;
 }
 .back:hover {
   background: rgba(0, 0, 0, 0.03);
@@ -41,6 +40,7 @@
   border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
+  color: var(--color-text);
 }
 .iconBtn:hover {
   transform: translateY(-2px);
@@ -207,6 +207,14 @@
   padding: 2rem;
   text-align: center;
   color: rgb(var(--color-text));
+}
+
+.iconBtn[aria-label="Excluir receita"] {
+  border-color: rgba(255, 0, 0, 0.08);
+}
+
+.iconBtn[aria-label="Excluir receita"]:hover {
+  background: rgba(255, 0, 0, 0.06);
 }
 
 /* responsive */

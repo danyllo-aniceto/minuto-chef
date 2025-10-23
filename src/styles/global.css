@@ -10,11 +10,11 @@
 
 /* dark theme */
 .dark {
-  --color-bg: 15 23 42;
+  --color-bg: 0 0 0;
   --color-text: 248 250 252;
-  --color-primary: 59 130 246;
+  --color-primary: 250 174 52;
   --color-secondary: 168 85 247;
-  --color-border: 51 65 85;
+  --color-border: 250 174 52;
   --reader-bg: 7 16 41;
 }
 

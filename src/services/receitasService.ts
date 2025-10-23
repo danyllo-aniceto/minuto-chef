@@ -88,4 +88,13 @@ export const receitasService = {
     const res = await api.post<Receita[]>("/receitas/search", body);
     return res.data;
   },
+
+  /**
+   * DELETE /receitas/:id
+   * deleta uma receita por id
+   */
+  async delete(id: number | string): Promise<{ mensagem?: string }> {
+    const res = await api.delete<{ mensagem?: string }>(`/receitas/${id}`);
+    return res.data;
+  },
 };
