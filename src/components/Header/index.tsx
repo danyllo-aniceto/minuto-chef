@@ -1,19 +1,27 @@
 // src/components/Header/index.tsx
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import styles from "./Header.module.css";
 import Logo from "../../assets/logo_minutoChef.png";
 import LogoWhite from "../../assets/logo_minutoChef_white.png";
 import { ThemeToggle } from "../ThemeToggle";
-
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
+import Button from "@mui/material/Button";
 import { useTheme } from "../../hooks/useTheme";
+import { useAuth } from "../../context/authContext";
 
 export function Header() {
   const [open, setOpen] = useState(false);
   const { theme } = useTheme();
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/");
+  };
 
   return (
     <header className={styles.header}>
@@ -24,8 +32,6 @@ export function Header() {
             alt="Minuto Chef"
             className={styles.logo}
           />
-          {/* opcional: exibir título se quiser */}
-          {/* <span className={styles.title}>Minuto Chef</span> */}
         </NavLink>
 
         {/* Desktop nav */}
@@ -48,6 +54,17 @@ export function Header() {
             Receitas
           </NavLink>
 
+          {user && (
+            <NavLink
+              to="/minhas-receitas"
+              className={({ isActive }) =>
+                isActive ? `${styles.link} ${styles.active}` : styles.link
+              }
+            >
+              Minhas Receitas
+            </NavLink>
+          )}
+
           <NavLink
             to="/receitas/novo"
             className={({ isActive }) =>
@@ -56,6 +73,7 @@ export function Header() {
           >
             Criar Receita
           </NavLink>
+
           <NavLink
             to="/sobre"
             className={({ isActive }) =>
@@ -66,12 +84,38 @@ export function Header() {
           </NavLink>
 
           <div className={styles.separator} />
+
+          {/* login/logout */}
+          {!user ? (
+            <NavLink
+              to="/login"
+              className={({ isActive }) =>
+                isActive ? `${styles.link} ${styles.active}` : styles.link
+              }
+            >
+              Login
+            </NavLink>
+          ) : (
+            <>
+              <span className={styles.userName}>👋 {user.nome}</span>
+              <NavLink
+                onClick={handleLogout}
+                className={({ isActive }) =>
+                  isActive ? `${styles.link} ${styles.active}` : styles.link
+                }
+                to="/login"
+              >
+                Sair
+              </NavLink>
+            </>
+          )}
+
           <div className={styles.toggleDesktop}>
             <ThemeToggle />
           </div>
         </nav>
 
-        {/* Mobile: ThemeToggle + hamburger (MUI IconButton) */}
+        {/* Mobile */}
         <div className={styles.mobileRight}>
           <div className={styles.toggleMobile}>
             <ThemeToggle />
@@ -98,7 +142,7 @@ export function Header() {
         </div>
       </div>
 
-      {/* mobile menu panel */}
+      {/* Mobile Menu */}
       <div className={`${styles.mobilePanel} ${open ? styles.open : ""}`}>
         <NavLink
           to="/"
@@ -114,6 +158,17 @@ export function Header() {
         >
           Receitas
         </NavLink>
+
+        {user && (
+          <NavLink
+            to="/minhas-receitas"
+            onClick={() => setOpen(false)}
+            className={styles.mobileLink}
+          >
+            Minhas Receitas
+          </NavLink>
+        )}
+
         <NavLink
           to="/receitas/novo"
           onClick={() => setOpen(false)}
@@ -128,6 +183,27 @@ export function Header() {
         >
           Sobre
         </NavLink>
+
+        <div className={styles.mobileAuth}>
+          {!user ? (
+            <Button
+              fullWidth
+              variant="contained"
+              onClick={() => navigate("/login")}
+            >
+              Login
+            </Button>
+          ) : (
+            <Button
+              fullWidth
+              color="error"
+              variant="contained"
+              onClick={handleLogout}
+            >
+              Logout
+            </Button>
+          )}
+        </div>
       </div>
     </header>
   );

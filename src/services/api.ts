@@ -6,6 +6,15 @@ export const api = axios.create({
   timeout: 10000,
 });
 
+// helper para setar token (usado ao logar / ao carregar app)
+export function setAuthToken(token?: string | null) {
+  if (token) {
+    api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+  } else {
+    delete api.defaults.headers.common["Authorization"];
+  }
+}
+
 // Interceptor básico (opcional) para extrair mensagem de erro
 api.interceptors.response.use(
   (response) => response,

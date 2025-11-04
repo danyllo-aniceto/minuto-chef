@@ -28,16 +28,16 @@ const CREATORS: Creator[] = [
       "https://media.licdn.com/dms/image/v2/D4D03AQEzy5zYP6IyRA/profile-displayphoto-crop_800_800/B4DZlVKp2dH4AI-/0/1758070482114?e=1762387200&v=beta&t=_uB8CJkSTQ3uKm-IDPx9ReBdYoJ5O2FdLg1ALkAxAX8",
     linkedin: "https://www.linkedin.com/in/davi-amaral-34b668169/",
     github: "https://github.com/Amaraldavi",
-    role: "Desenvolvedor",
+    role: "DataBase Administrator | Desenvolvedor Backend | NodeJs | SQLite | Python",
   },
   {
     id: "c3",
     name: "Flávio Barbieri",
     photo:
-      "https://media.licdn.com/dms/image/v2/D4D35AQEWhNIQyw08Mg/profile-framedphoto-shrink_200_200/profile-framedphoto-shrink_200_200/0/1723846506495?e=1761501600&v=beta&t=VVCNIvh1sAj3vhVr_6amqohmeA8Eh3bIsn7pBFpQdUw",
+      "https://media.licdn.com/dms/image/v2/D4D35AQEWhNIQyw08Mg/profile-framedphoto-shrink_800_800/profile-framedphoto-shrink_800_800/0/1723846506495?e=1762905600&v=beta&t=11aVV6SFP_321Z-oybBAKv0NwWrHA9kQr55UleNraog",
     linkedin: "https://www.linkedin.com/in/flavio-henrique-2753612b4/",
     github: "https://github.com/FlavioBarbieri",
-    role: "Desenvolvedor",
+    role: "SQLServer | Python | MySQL | Redes | Back-end | Banco de Dados",
   },
   {
     id: "c4",
@@ -46,7 +46,7 @@ const CREATORS: Creator[] = [
       "https://media.licdn.com/dms/image/v2/D4D03AQH0SI2D1pqyLg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1720133499408?e=1762387200&v=beta&t=kjNJPU739zHS0QU7WRFZizNIKNyLOx9gDu3tkQjIgZw",
     linkedin: "https://www.linkedin.com/in/higor-batista-de-oliveira/",
     github: "https://github.com/higorolv21",
-    role: "Desenvolvedor",
+    role: "Design UI/UX | Análise de dados | Business Intelligence",
   },
   {
     id: "c5",
@@ -55,7 +55,7 @@ const CREATORS: Creator[] = [
       "https://media.licdn.com/dms/image/v2/D4D03AQE0OntJGzR4Ig/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1709908350575?e=1762387200&v=beta&t=fS-T97fQOHucyPUnk2mkcrpRBTsIVLmx-9nSG6Zkz9s",
     linkedin: "https://www.linkedin.com/in/matheusbarbosa00/",
     github: "https://github.com/elmbarbosa",
-    role: "Desenvolvedor",
+    role: "Desenvolvedor de Software | Python | SQL",
   },
   {
     id: "c6",
@@ -64,7 +64,7 @@ const CREATORS: Creator[] = [
       "https://media.licdn.com/dms/image/v2/D4E03AQH8TPx2OFMQgQ/profile-displayphoto-crop_800_800/B4EZkRULFwIkAM-/0/1756932125665?e=1762387200&v=beta&t=E2VfF21pNCU_yVHv2faW7SSJZz29FK8h0aFbV7I7Zas",
     linkedin: "https://www.linkedin.com/in/pedro-henrique-cruzbb92872b7/",
     github: "https://github.com/pedro-cruzz",
-    role: "Desenvolvedor",
+    role: "Desenvolvedor Backend em Formação | Python, Django, SQL | Backend, APIs e Desenvolvimento Web",
   },
 ];
 

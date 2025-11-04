@@ -3,10 +3,12 @@ import { useNavigate } from "react-router-dom";
 import styles from "./CreateReceitaForm.module.css";
 import type { Ingrediente, NovaReceita } from "../../types/receita";
 import { useCreateReceita } from "../../hooks/useCreateReceita";
+import { useAuth } from "../../context/authContext";
 
 export function CreateReceitaForm() {
   const navigate = useNavigate();
   const { create, loading, error, result } = useCreateReceita();
+  const { user } = useAuth();
 
   const [nome, setNome] = useState("");
   const [imagem, setImagem] = useState("");
@@ -85,7 +87,11 @@ export function CreateReceitaForm() {
   return (
     <form onSubmit={onSubmit} className={styles.form}>
       <h3 className={styles.formTitle}>Adicionar Receita</h3>
-
+      {user && (
+        <p style={{ fontSize: "0.9rem", marginBottom: "1rem", color: "#888" }}>
+          Criando como <strong>{user.nome}</strong>
+        </p>
+      )}
       <div className={styles.field}>
         <label className={styles.label}>Nome</label>
         <input

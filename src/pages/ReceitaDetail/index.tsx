@@ -14,6 +14,8 @@ import { useState } from "react";
 import { useDeleteReceita } from "../../hooks/useDeleteReceita";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
+import EditIcon from "@mui/icons-material/Edit";
+import { useAuth } from "../../context/authContext";
 
 export default function ReceitaDetailPage() {
   const { id } = useParams<{ id?: string }>();
@@ -27,6 +29,9 @@ export default function ReceitaDetailPage() {
   const [snackSeverity, setSnackSeverity] = useState<"success" | "error">(
     "success"
   );
+
+  const { user } = useAuth();
+  const isCreator = user && data && Number(user.id) === Number(data.usuario_id);
 
   async function handleConfirmDelete() {
     if (!id) return;
@@ -108,17 +113,31 @@ export default function ReceitaDetailPage() {
             >
               Imprimir
             </button>
+            {/* botão editar */}
+            {isCreator && (
+              <>
+                <IconButton
+                  aria-label="Editar receita"
+                  size="small"
+                  title="Editar receita"
+                  style={{ color: "var(--color-text)" }}
+                  onClick={() => navigate(`/receitas/${id}/editar`)}
+                >
+                  <EditIcon />
+                </IconButton>
 
-            {/* botão de deletar */}
-            <IconButton
-              onClick={() => setConfirmOpen(true)}
-              aria-label="Excluir receita"
-              size="small"
-              title="Excluir receita"
-              style={{ color: "var(--color-text)" }}
-            >
-              <DeleteIcon />
-            </IconButton>
+                {/* botão de deletar */}
+                <IconButton
+                  onClick={() => setConfirmOpen(true)}
+                  aria-label="Excluir receita"
+                  size="small"
+                  title="Excluir receita"
+                  style={{ color: "var(--color-text)" }}
+                >
+                  <DeleteIcon />
+                </IconButton>
+              </>
+            )}
           </div>
         </div>
 

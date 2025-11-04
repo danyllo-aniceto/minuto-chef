@@ -10,6 +10,7 @@ export interface Receita {
   imagem?: string;
   modo_preparo?: string;
   ingredientes: Ingrediente[];
+  usuario_id?: number;
 }
 
 export type PaginatedResult<T> = {

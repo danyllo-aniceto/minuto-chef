@@ -3,28 +3,17 @@ import { api } from "./api";
 import type { Receita, NovaReceita } from "../types/receita";
 
 export const receitasService = {
-  /**
-   * GET /receitas
-   * retorna todas as receitas
-   */
   async listAll(): Promise<Receita[]> {
     const res = await api.get<Receita[]>("/receitas");
     return res.data;
   },
 
-  /**
-   * GET /receitas/id/:id
-   * retorna uma receita por id
-   */
+  // GET /receitas/:id
   async getById(id: number | string): Promise<Receita> {
-    const res = await api.get<Receita>(`/receitas/id/${id}`);
+    const res = await api.get<Receita>(`/receitas/${id}`);
     return res.data;
   },
 
-  /**
-   * GET /receitas/nome/:nome
-   * busca por nome (LIKE %nome%)
-   */
   async searchByName(nome: string): Promise<Receita[]> {
     const res = await api.get<Receita[]>(
       `/receitas/nome/${encodeURIComponent(nome)}`
@@ -32,10 +21,6 @@ export const receitasService = {
     return res.data;
   },
 
-  /**
-   * GET /receitas/ingrediente/:ingrediente
-   * busca por ingrediente (filtra JSON de ingredientes)
-   */
   async searchByIngredient(ingrediente: string): Promise<Receita[]> {
     const res = await api.get<Receita[]>(
       `/receitas/ingrediente/${encodeURIComponent(ingrediente)}`
@@ -44,57 +29,63 @@ export const receitasService = {
   },
 
   /**
-   * POST /receitas
-   * cria uma nova receita
-   * body: { nome, imagem?, modo_preparo?, ingredientes: [] }
-   */
-  async create(
-    receita: NovaReceita
-  ): Promise<{ id: number; mensagem?: string }> {
-    const res = await api.post<{ id: number; mensagem?: string }>(
-      " /receitas".trim(),
-      receita
-    );
-    return res.data;
-  },
-
-  /**
-   * Busca combinada usando query params:
-   *  - nome?: string
-   *  - ingredientes?: string[]  (será serializado como "a,b,c")
+   * NOVO: search usando query params GET /receitas?nome=...&ingredientes=a,b,c
+   * Recebe { nome?: string, ingredientes?: string[] } e transforma ingredientes em "a,b,c"
    */
   async search(params: {
     nome?: string;
     ingredientes?: string[];
   }): Promise<Receita[]> {
-    const query = new URLSearchParams();
-    if (params.nome) query.set("nome", params.nome);
+    const q: Record<string, string> = {};
+    if (params.nome) q.nome = params.nome;
     if (params.ingredientes && params.ingredientes.length) {
-      // join por vírgula -> backend aceita "a,b,c"
-      query.set("ingredientes", params.ingredientes.join(","));
+      // backend espera "a,b,c"
+      q.ingredientes = params.ingredientes.join(",");
     }
-    const q = query.toString();
-    const res = await api.get<Receita[]>(`/receitas${q ? `?${q}` : ""}`);
+
+    // passa como query params
+    const res = await api.get<Receita[]>("/receitas", { params: q });
     return res.data;
   },
 
-  /**
-   * Alternativa: POST /receitas/search (aceita body com array)
-   */
-  async searchPost(body: {
-    nome?: string;
-    ingredientes?: string[];
-  }): Promise<Receita[]> {
-    const res = await api.post<Receita[]>("/receitas/search", body);
+  async create(
+    receita: NovaReceita
+  ): Promise<{ id: number; mensagem?: string }> {
+    const res = await api.post<{ id: number; mensagem?: string }>(
+      `/receitas`,
+      receita
+    );
     return res.data;
   },
 
-  /**
-   * DELETE /receitas/:id
-   * deleta uma receita por id
-   */
+  // lista apenas do usuário logado (aceita filtros ?nome=&ingrediente=)
+  async minhas(params?: { nome?: string; ingrediente?: string }) {
+    const q = new URLSearchParams();
+    if (params?.nome) q.set("nome", params.nome);
+    if (params?.ingrediente) q.set("ingrediente", params.ingrediente);
+    const qs = q.toString();
+    const res = await api.get<Receita[]>(
+      `/minhas-receitas${qs ? `?${qs}` : ""}`
+    );
+    return res.data;
+  },
+
   async delete(id: number | string): Promise<{ mensagem?: string }> {
     const res = await api.delete<{ mensagem?: string }>(`/receitas/${id}`);
+    return res.data;
+  },
+
+  async update(
+    id: number | string,
+    receita: {
+      nome: string;
+      imagem?: string;
+      modo_preparo?: string;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ingredientes: any[];
+    }
+  ): Promise<Receita> {
+    const res = await api.put<Receita>(`/receitas/${id}`, receita);
     return res.data;
   },
 };

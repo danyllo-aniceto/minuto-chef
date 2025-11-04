@@ -1,0 +1,69 @@
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  background-color: var(--color-bg, #fff);
+  color: var(--color-text, #222);
+  border-radius: 1.25rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--color-border, #ddd);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+/* === Botões === */
+.actions button {
+  border-radius: 0.75rem !important;
+  text-transform: none !important;
+  font-weight: 600 !important;
+  padding: 0.6rem 1.5rem !important;
+  box-shadow: none !important;
+  transition: all 0.25s ease !important;
+}
+
+.actions button:hover {
+  transform: translateY(-1px);
+}
+
+/* Botão primário */
+.actions :global(.MuiButton-containedPrimary) {
+  background: rgb(var(--color-primary));
+  color: rgb(var(--color-bg));
+  padding: 0.5rem 0.9rem;
+  border-radius: 10px;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.actions :global(.MuiButton-containedPrimary:hover) {
+  transform: translateY(-2px);
+}
+
+/* Botão secundário (Cancelar) */
+.actions :global(.MuiButton-outlined) {
+  border-color: var(--color-border, #ccc) !important;
+  color: var(--color-text, #333) !important;
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .container {
+    padding: 1.25rem;
+  }
+
+  .actions {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .actions button {
+    width: 100%;
+  }
+}
