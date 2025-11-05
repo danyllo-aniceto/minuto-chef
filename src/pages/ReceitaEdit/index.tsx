@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useReceita } from "../../hooks/useReceita";
 import { useUpdateReceita } from "../../hooks/useUpdateReceita";

@@ -1,4 +1,4 @@
-import React, { useState, forwardRef, useImperativeHandle } from "react";
+import { useState, forwardRef, useImperativeHandle } from "react";
 import type { Ingrediente, NovaReceita, Receita } from "../../types/receita";
 import styles from "./EditReceitaForm.module.css";
 
